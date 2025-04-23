@@ -13,7 +13,7 @@ jobs:
     steps:
     - name: Install conan
       run: |
-        pip install conan --upgrade  # Might need sudo or --user
+        pip install conan --upgrade --user
 
     - name: Verify has profile
       run: |
