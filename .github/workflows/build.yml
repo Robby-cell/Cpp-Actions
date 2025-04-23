@@ -11,6 +11,10 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+    - name: Install conan
+      run: |
+        pip install conan --upgrade  # Might need sudo or --user
+
     - name: Verify has profile
       run: |
         conan profile detect || echo "Already has default profile"
