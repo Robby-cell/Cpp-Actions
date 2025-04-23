@@ -21,6 +21,8 @@ jobs:
 
     - name: Install dependencies
       run: |
+        ls -la
+        echo "Installing dependencies..."
         conan install . --build=missing
 
     - name: Build the project
