@@ -1,0 +1,24 @@
+name: Build project
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Verify has profile
+      run: |
+        conan profile detect || echo "Already has default profile"
+
+    - name: Install dependencies
+      run: |
+        conan install . --build=missing
+
+    - name: Build the project
+      run: |
+        conan build .
