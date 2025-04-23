@@ -11,6 +11,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+    - uses: actions/checkout@v4
+
     - name: Install conan
       shell: bash
       run: |
@@ -24,11 +26,11 @@ jobs:
     - name: Install dependencies
       shell: bash
       run: |
-        ls -la
         echo "Installing dependencies..."
         conan install . --build=missing
 
     - name: Build the project
       shell: bash
       run: |
+        echo "Building the porject..."
         conan build .
