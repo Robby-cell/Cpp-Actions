@@ -12,22 +12,23 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Install conan
-      uses: actions/checkout@v4
+      shell: bash
       run: |
         pip install conan --upgrade --user
 
     - name: Verify has profile
+      shell: bash
       run: |
         conan profile detect || echo "Already has default profile"
 
     - name: Install dependencies
-      uses: ./
+      shell: bash
       run: |
         ls -la
         echo "Installing dependencies..."
         conan install . --build=missing
 
     - name: Build the project
-      uses: ./
+      shell: bash
       run: |
         conan build .
