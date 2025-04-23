@@ -32,5 +32,11 @@ jobs:
     - name: Build the project
       shell: bash
       run: |
-        echo "Building the porject..."
+        echo "Building the project..."
         conan build .
+
+    - name: Archive code coverage results
+      uses: actions/upload-artifact@v4
+      with:
+        name: cpp-actions
+        path: build/Release/cpp-actions
