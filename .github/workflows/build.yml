@@ -12,6 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Install conan
+      uses: actions/checkout@v4
       run: |
         pip install conan --upgrade --user
 
@@ -20,11 +21,13 @@ jobs:
         conan profile detect || echo "Already has default profile"
 
     - name: Install dependencies
+      uses: ./
       run: |
         ls -la
         echo "Installing dependencies..."
         conan install . --build=missing
 
     - name: Build the project
+      uses: ./
       run: |
         conan build .
